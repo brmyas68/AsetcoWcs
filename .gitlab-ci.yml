@@ -1,0 +1,32 @@
+image: docker:latest
+services:
+   - docker:dind
+stages:
+   - build
+   - deploy
+variables:
+  COMMIT: $CI_COMMIT_SHORT_SHA
+  IMAGE_TAG1: asetcoservice/asetcoyadak-backend:$CI_COMMIT_SHORT_SHA
+BUILD:
+  stage: build
+  tags:
+     - asetcoyadak-wcs
+  only:
+      - Develop
+  script:
+     - docker build -t asetcoservice/asetcoyadak-backend:latest .
+     - docker push asetcoservice/asetcoyadak-backend:latest
+     - echo "PUSH On DOCKER HUB..."
+DEPLOY:
+ stage: deploy
+ tags:
+   - asetcoyadak-wcs
+
+ only:
+     - Develop
+ script:
+    - kubectl cluster-info
+    - kubectl rollout restart daemonset/backend
+    - echo "DEPLOY On Kubernetes..."
+    - echo "FINISHED CI/CD LEASSON..."
+
