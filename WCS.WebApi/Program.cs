@@ -67,7 +67,7 @@ builder.Services.AddCors(options =>
         builder => builder
            //.SetIsOriginAllowed( _ => true)
            //.AllowAnyOrigin()
-           .WithOrigins("http://localhost:3000", "https://www.homacall.com", "ftp://5.61.28.121", "https://api.homacall.com", "https://localhost:3001", "http://web.homacall.com", "https://web.homacall.com", "https://god.homacall.com", "https://asetco.ir", "https://104.237.228.52")
+           .WithOrigins("http://localhost:3000", "https://www.asetcoyadak.com", "ftp://107.181.112.145", "https://api.asetcoyadak.com", "https://localhost:3001", "http://web.homacall.com", "https://uc.asetcoyadak.com", "https://god.homacall.com", "https://asetco.ir", "https://104.237.228.52")
           .AllowAnyMethod()
           .AllowAnyHeader()
           .AllowCredentials()
